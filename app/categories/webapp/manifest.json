@@ -1,0 +1,101 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "categories",
+        "type": "application",
+        "title": "Manage Categories",
+        "description": "Manage Categories",
+        "i18n": "i18n/i18n.properties",
+        "dataSources": {
+            "MappingService": {
+                "uri": "/mapping/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.fe": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "MappingService",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect" : true,
+                    "earlyRequests": true,
+                    "groupProperties": {
+                        "default": {
+                            "submit": "Auto"
+                        }
+                    }
+                }
+            }
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "CategoriesList",
+                    "target": "CategoriesList"
+                },
+                {
+                    "pattern": "Categories({key}):?query:",
+                    "name": "CategoriesDetails",
+                    "target": "CategoriesDetails"
+                }
+            ],
+            "targets": {
+                "CategoriesList": {
+                    "type": "Component",
+                    "id": "CategoriesList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings" : {
+                            "entitySet" : "Categories",
+                            "navigation" : {
+                                "Categories" : {
+                                    "detail" : {
+                                        "route" : "CategoriesDetails"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "CategoriesDetails": {
+                    "type": "Component",
+                    "id": "CategoriesDetailsList",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings" : {
+                            "entitySet" : "Categories"
+                        }
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "fullWidth": false
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

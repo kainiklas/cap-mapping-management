@@ -1,0 +1,5 @@
+INPUT_1,INPUT_2,OUTPUT,CATEGORY_ID
+abc,123,abc123,1
+def,456,def456,1
+abc,123,abc123,2
+def,456,def456,2
