@@ -1,27 +1,27 @@
 using MappingService from '../../srv/mapping-service';
 
+annotate MappingService.Mappings with @odata.draft.enabled;
+
 // TABLE
 annotate MappingService.Mappings with @(UI : {
-    Identification  : [
-    {Value : name},
-    {
-        $Type              : 'UI.DataFieldForAction',
-        Label              : 'Accept',
-        Action             : 'my.db.MappingService.Mappings.MappingService.accept',
-        InvocationGrouping : #isolated
-    }
-    ],
+    Identification  : [{Value : name}],
     SelectionFields : [category_ID],
     LineItem        : [
-    {Value : ID},
     {Value : input_1},
     {Value : input_2},
     {Value : output},
     {Value : category.name},
+    {Value : status.name},
     {
         $Type              : 'UI.DataFieldForAction',
-        Label              : 'Accept',
-        Action             : 'accept',
+        Label              : 'Approve',
+        Action             : 'MappingService.approve',
+        InvocationGrouping : #isolated
+    },
+    {
+        $Type              : 'UI.DataFieldForAction',
+        Label              : 'Reject',
+        Action             : 'MappingService.reject',
         InvocationGrouping : #isolated
     },
     ],
@@ -57,7 +57,8 @@ UI : {
     {Value : input_1},
     {Value : input_2},
     {Value : output},
-    {Value : category_ID}
+    {Value : category_ID},
+    {Value : status.name}
     ]},
 
     FieldGroup #Admin   : {Data : [
@@ -69,5 +70,3 @@ UI : {
 }
 
 );
-
-annotate MappingService.Mappings with @odata.draft.enabled;

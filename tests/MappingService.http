@@ -1,0 +1,15 @@
+@server = http://localhost:4004
+
+### ------------------------------------------------------------------------
+GET {{server}}/mapping/Mappings
+Content-Type: application/json
+
+### ------------------------------------------------------------------------
+GET {{server}}/mapping/Mappings(ID=11111111-1111-1111-1111-111111111111,IsActiveEntity=true)
+Content-Type: application/json
+
+### ------------------------------------------------------------------------
+POST {{server}}/mapping/Mappings(ID=11111111-1111-1111-1111-111111111111,IsActiveEntity=true)/MappingService.approve
+Content-Type: application/json
+
+{} 

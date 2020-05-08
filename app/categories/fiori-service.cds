@@ -1,5 +1,7 @@
 using MappingService from '../../srv/mapping-service';
 
+annotate MappingService.Categories with @odata.draft.enabled;
+
 annotate MappingService.Categories with @(
 
 UI : {
@@ -21,5 +23,3 @@ UI : {
     FieldGroup #General : {Data : [{Value : name}]}
     
 });
-
-annotate MappingService.Categories with @odata.draft.enabled;

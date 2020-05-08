@@ -1,0 +1,29 @@
+@server = http://localhost:4004
+
+### ------------------------------------------------------------------------
+GET {{server}}/simple/Things
+Content-Type: application/json
+
+### ------------------------------------------------------------------------
+GET {{server}}/simple/Things(1)
+Content-Type: application/json
+
+### ------------------------------------------------------------------------
+POST {{server}}/simple/actionUnbound
+Content-Type: application/json
+
+{  }
+
+### ------------------------------------------------------------------------
+POST {{server}}/simple/Things(1)/SimpleService.actionBound
+Content-Type: application/json
+
+{  }
+
+### ------------------------------------------------------------------------
+GET {{server}}/simple/func()
+Content-Type: application/json
+
+### ------------------------------------------------------------------------
+GET {{server}}/simple/Things(1)/SimpleService.funcBound()
+Content-Type: application/json

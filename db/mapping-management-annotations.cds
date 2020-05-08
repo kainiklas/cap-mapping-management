@@ -1,4 +1,4 @@
-using {my.db as db} from './schema';
+using {my.db as db} from './mapping-management';
 
 annotate db.Categories with {
     ID   @title : 'Category ID';

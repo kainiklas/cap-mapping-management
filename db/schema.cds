@@ -1,20 +1,5 @@
-namespace my.db;
+using from './mapping-management';
+using from './mapping-management-annotations';
 
-using {
-    managed,
-    cuid,
-    sap
-} from '@sap/cds/common';
-
-entity Mappings : managed, cuid {
-    input_1  : String                    @(title : 'Input 1');
-    input_2  : String                    @(title : 'Input 2');
-    output   : String                    @(title : 'Output');
-    category : Association to Categories @(title : 'Category');
-}
-
-entity Categories : managed, sap.common.CodeList {
-    key ID       : Integer;
-        mappings : Association to many Mappings
-                       on mappings.category = $self;
-}
+using from './simple';
+using from './simple-annotations';
