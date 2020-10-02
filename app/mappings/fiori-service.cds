@@ -5,7 +5,10 @@ annotate MappingService.Mappings with @odata.draft.enabled;
 // TABLE
 annotate MappingService.Mappings with @(UI : {
     Identification  : [{Value : name}],
-    SelectionFields : [category_ID],
+    SelectionFields : [
+    category_ID,
+    status_ID
+    ],
     LineItem        : [
     {Value : input_1},
     {Value : input_2},
@@ -25,14 +28,10 @@ annotate MappingService.Mappings with @(UI : {
         InvocationGrouping : #isolated
     },
     ],
-    HeaderInfo      : {
-        TypeName       : 'Mapping',
-        TypeNamePlural : 'Mappings',
-        Title          : {Value : ID}
-    },
     HiddenFilter    : [ID]
 }) {
     category @Common : {Text : category.name};
+    status   @Common : {Text : status.name};
 };
 
 
@@ -40,6 +39,11 @@ annotate MappingService.Mappings with @(UI : {
 annotate MappingService.Mappings with @(
 
 UI : {
+    HeaderInfo          : {
+        TypeName       : 'Mapping',
+        TypeNamePlural : 'Mappings',
+        Title          : {Value : ID}
+    },
     Facets              : [
     {
         $Type  : 'UI.ReferenceFacet',
@@ -58,7 +62,7 @@ UI : {
     {Value : input_2},
     {Value : output},
     {Value : category_ID},
-    {Value : status.name}
+    {Value : status_ID}
     ]},
 
     FieldGroup #Admin   : {Data : [
@@ -66,7 +70,8 @@ UI : {
     {Value : createdAt},
     {Value : modifiedBy},
     {Value : modifiedAt}
-    ]}
+    ]},
+
 }
 
 );

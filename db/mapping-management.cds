@@ -11,7 +11,7 @@ entity Mappings : managed, cuid {
     input_2  : String                    @(title : 'Input 2');
     output   : String                    @(title : 'Output');
     category : Association to Categories @(title : 'Category');
-    status   : Association to Status     @(title : 'Status')
+    status   : Association to Status     @(title : 'Status') @Core.Immutable;
 }
 
 entity Categories : managed, sap.common.CodeList {
